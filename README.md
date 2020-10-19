@@ -1,43 +1,5 @@
 # SLAM_Navigation
 SLAM navigation on simplified scenario (FastSLAM implementation using Python) based on Particle Filter (Sequential Monte Carlo). What happens when the visual support of a drone is missing?
-## **Abstract**
-
-This work proposes theoretical bases for the implementation of automatic fault detection in photovoltaic plants using flying drones. It focuses on the drone’s localization and stabilization part, as a continuation of previous work done on Hot Spots identification using thermographic images captured from manually driven drones, and Convolutional Neural Networks.
-
-## **Introduction**
-
-The main focus is to address the problem of keeping a flying drone still even under external disturbances. The ambition is to use only the sensors available on the drone to estimate the current state, location in our case, of the drone, which is the most challenging part of the stabilization problem.
-
-The most informative sensor is a camera, which is also a key source of data for visual localization used in the following system.
-
-The report is organized as follows. First, we briefly describe the problem that motivates the research, the image recognition part using thermographic images and Deep Learning, then we will analyze some image processing techniques, after this, a flying drone Control System Model of a quadcopter is presented, and finally we will focus on the theoretical part of the system controlling the flight of a drone to stabilize it regardless of the inaccuracy of its sensors.
-
-We will consider Simultaneous Localization and Mapping (SLAM) to track recognizable points in the camera image together with a 3D map of the points. The output location is afterwards combined using Kalman filter with odometry data to estimate future location based on the drone’s dynamics model. This is used afterwards for gain control of the drone’s flight when SLAM fails to estimate the pose of the drone.
-
-To exemplify the stabilization problem, we will simulate a SLAM navigation on a simplified scenario, implementing FastSLAM, that relies on Particles Filter Method, using Python. We will see how SLAM behaves when the visual references are missing.
-
-Main technologies considered on this proposal paper:
-
-- Deep Learning for Hot Spot identification on thermal images, not in the scope of this document.
-- Image Processing techniques to improve image based object detection on thermal images.
-- Flying drone (quadcopter) certified for operation on industrial environments. We will introduce a possible Control System Model of a quadcopter.
-- Camera based localization and navigation using SLAM.
-- Drone stabilization using Extended Kalman Filter, interface and measurement model.
-- SLAM navigation on simplified scenario (FastSLAM implementation using Python) based on Particle Filter (Sequential Monte Carlo). What happens when the visual support is missing?
-
-## **Photovoltaic Plants and Hot Spots**
-
-In big industrial facilities, fault identification of the different components of the plant is a critical part of the daily operation.
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8952231-9e7f-4da2-b24e-fa14a2bbbf0d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8952231-9e7f-4da2-b24e-fa14a2bbbf0d/Untitled.png)
-
-Figure 1. Aerial view of Photovoltaic Park.
-
-This paper complements previous works done on automating the process of problem identification in photovoltaic cells for big photovoltaic parks, which is typically a slow, manual, and repetitive maintenance task.
-
-Typically, the personal of the facility walks along the plant carrying a high resolution thermal camera (ex.: Testo 850i), to identify problems on the field.
-
-Previous works explored the possibility of using drones provisioned with cameras and image processing techniques to improve this task. We will complement the image based event detection part suggesting several image processing and computer vision techniques.
 
 ## **Abstract**
 
