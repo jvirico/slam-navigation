@@ -21,7 +21,7 @@ We will consider Simultaneous Localization and Mapping (SLAM) to track recogniza
 
 To exemplify the stabilization problem, we will simulate a SLAM navigation on a simplified scenario, implementing FastSLAM, that relies on Particles Filter Method, using Python. We will see how SLAM behaves when the visual references are missing.
 
-Main technologies considered on this proposal paper:
+Main technologies considered on this work:
 
 - Deep Learning for Hot Spot identification on thermal images, not in the scope of this document.
 - Image Processing techniques to improve image based object detection on thermal images.
@@ -403,18 +403,13 @@ In this way, the system should be able to process video frames together with a p
 
 ## **References**
 
-[1] Camera-Based Localization and Stabilization of a Flying Drone
-[https://www.semanticscholar.org/paper/Camera-Based-Localization-and-Stabilization-of-a-Skoda-Bart%C3%A1k/33380637d49fbd6eb19ab8f54d600b04e5034302](https://www.semanticscholar.org/paper/Camera-Based-Localization-and-Stabilization-of-a-Skoda-Bart%C3%A1k/33380637d49fbd6eb19ab8f54d600b04e5034302)
+[1] - SKODA, Jan; BARTÁK, Roman. Camera-based localization and stabilization of a flying drone. En The Twenty-Eighth International Flairs Conference. 2015.
 
-[2] Designing and Modeling of Quadcopter Control System Using L1 Adaptive Control
-[https://www.sciencedirect.com/science/article/pii/S1877050917300479](https://www.sciencedirect.com/science/article/pii/S1877050917300479)
+[2] - THU, Kyaw Myat; GAVRILOV, A. I. Designing and modeling of quadcopter control system using L1 adaptive control. Procedia Computer Science, 2017, vol. 103, p. 528-535.
 
-[3] Simultaneous localization and mapping
-[https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping)
+[3] - [Simultaneous localization and mapping Wikipedia](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping).
 
-[4] PythonRobotics Documentation
-[https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/](https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/)
-[https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0](https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0)
+[4] - [PythonRobotics Documentation](https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/).
+[Fast Slam](https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0).
 
-[5] FastSLAM – Feature-based SLAM with Particle Filters
-[http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf)
+[5] - [FastSLAM – Feature-based SLAM with Particle Filters](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf)
