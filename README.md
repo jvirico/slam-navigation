@@ -1,4 +1,4 @@
-# Simultaneous Localization and Mapping Navigation
+# Simultaneous Localization and Mapping Navigation for automated photovoltaic plants fault detection using drones
 
 
 #### Author
@@ -182,13 +182,12 @@ Given a series of controls $*u_t*$ and sensor observations $*o_t*$ over discrete
 
 Applying Bayes' rule gives a framework for sequentially updating the location posteriors, given a map and a transition function
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1226e62a-9086-4c9a-8809-075ce3c75e42/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1226e62a-9086-4c9a-8809-075ce3c75e42/Untitled.png)
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e5e6dd04-0750-4f97-8fcc-dc1528899c8f/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e5e6dd04-0750-4f97-8fcc-dc1528899c8f/Untitled.png)
+<img src="./img/P2.png" alt="drawing" width="90"/>
+<img src="./img/P3.png" alt="drawing" width="600"/>
 
 Similarly the map can be updated sequentially by:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4615c85-a157-4fb0-a600-bb7dda562c90/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4615c85-a157-4fb0-a600-bb7dda562c90/Untitled.png)
+<img src="./img/P4.png" alt="drawing" width="600"/>
 
 Like many inference problems, the solutions to inferring the two variables together can be found, to a local optimum solution, by alternating updates of the two beliefs in a form of EM algorithm.
 
@@ -200,7 +199,8 @@ The map has to be initialized before the localization. This is done by inserting
 
 Having the map, we can compare it with landmarks observed in every frame to localize the drone.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64e3ffe4-2a29-4fae-903c-c1bdf4753994/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64e3ffe4-2a29-4fae-903c-c1bdf4753994/Untitled.png)
+<img src="./img/land.png" alt="drawing" width="300"/>
+
 
 Figure 13. Map displaying Landmarks, slam navigation and ground truth.
 
@@ -210,17 +210,19 @@ Later, we will give a python implementation of FastSLAM (based on the **Particle
 
 Assuming a calibrated pinhole camera projection model *CamProj*:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c5c9afc4-0823-4469-98e0-e004038eacc6/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c5c9afc4-0823-4469-98e0-e004038eacc6/Untitled.png)
+<img src="./img/cam.png" alt="drawing" width="200"/>
+
 
 Where *x*, *y*, *z* are the coordinates of a landmark relative to the current camera pose and $*u_i*$, $*v_i*$ are the (pixel) coordinates of the landmark projection into the image plane of the camera.
 
 Let CameraPoseTrans($\mu$,$p_i$) denote the location of the landmark $*p_i*$ relatively to the camera pose $*p_i*$, We can use the defined projection to express the reprojection error vector $*e_j*$ of the landmark with coordinate vetor $*p_j*$ (relative to the map origin) which was observed at $*u_j*$, $*v_j*$. Reprojection error is the difference between where the landmark $*p_j*$ should be observed according to the map, if the drone’s pose in $\mu$, and where it was observed using the camera.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a9a0074-c91b-49f6-affb-1d2ccd1744da/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a9a0074-c91b-49f6-affb-1d2ccd1744da/Untitled.png)
+<img src="./img/ej.png" alt="drawing" width="400"/>
 
 In the correct pose of the drone, the reprojection errors should be very small. Therefore we can use $*e_j*$ for finding the most-likely camera pose $\mu’$:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b72de320-c69b-41cc-a9fd-82ade04e9556/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b72de320-c69b-41cc-a9fd-82ade04e9556/Untitled.png)
+<img src="./img/pi.png" alt="drawing" width="250"/>
+
 
 Where *S* denotes the set of landmark observations, $Obj(.,\sigma_T)$ is the Tukey biweight objective function, and $\sigma_T$ is a robust estimate of the distribution’s standard deviation.
 
@@ -234,7 +236,8 @@ The position of a landmark is initially computed from its first two observations
 
 Assume that we have N keyframes {1, … ,N}. In each of them, we observed a landmark set $*S_i*$, which is a subset of a set {1, …, M} of all *M* landmarks. We will denote the *j*th landmark observed in some keyframe *i* with the subscript *ji*. $\mu_i$ is the pose of a keyframe *i* and $*p_j*$ is the location of a landmark *j*. Bundle adjustment is then used to update the poses of keyframes and the locations of landmarks:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/999d0074-30c2-4025-b88b-c8f918f36fce/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/999d0074-30c2-4025-b88b-c8f918f36fce/Untitled.png)
+<img src="./img/pi2.png" alt="drawing" width="400"/>
+
 
 Note that the pose of the first keyframe is fixed in the origin of the map, hence  $\mu_2$.
 
@@ -258,7 +261,8 @@ Note:
 
 The extended version of Kalman Filter is necessary due to the nonlinear nature of the drone’s flight dynamics, so instead of partial derivatives, the Jacobian of State Transition *F* and the Observation Matrix *H* of Kalman is computed. *F* and *H* are defined to be the following Jacobians:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f2b9ca43-0d10-44fc-890a-53e54c6448c3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f2b9ca43-0d10-44fc-890a-53e54c6448c3/Untitled.png)
+
+<img src="./img/f.png" alt="drawing" width="150"/>
 
 ---
 
@@ -281,7 +285,8 @@ The major tasks of an EKF utilization is to implement the process and measuremen
 
 The measurement model is used to correct the filter’s prediction of the process state *xk* according to the obtained measurement. The main part of the model is a function $z_k=g(x_k)$, which is used to compute the expected measurement to be compared with the measurement obtained from the drone.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/86fee4a0-9da8-46bc-8dae-86adbcdce5e6/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/86fee4a0-9da8-46bc-8dae-86adbcdce5e6/Untitled.png)
+<img src="./img/g.png" alt="drawing" width="300"/>
+
 
 Together with the function *g*, the measurement model contains a covariance matrix, which specifies the precision of sensors. When the visual location system fails for a moment, the variances of it’s output, location (*x*, *y*, *z*), are increased, so that the filter practically ignores the measurements (*x*, *y*, *z*) and updates the pose of the drone according to the process model and the other measurements.
 
@@ -293,7 +298,7 @@ FastSLAM algorithm implementation is based on Particle Filter or Sequential Mont
 
 Each particle maintains a deterministic pose and n-EKFs for each landmark and updates it with each measurement.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/510c3bb5-e82c-462d-8f56-3b077361f3dc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/510c3bb5-e82c-462d-8f56-3b077361f3dc/Untitled.png)
+<img src="./img/pf.png" alt="drawing" width="250"/>
 
 Figure 14. Drone's estimation using Particle Filter.
 
@@ -307,9 +312,9 @@ The particles are initially drawn from a uniform distribution that represent the
 
 ### **Pseudocode**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ec59aff-e624-4572-b92f-2fe74dff3d1a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ec59aff-e624-4572-b92f-2fe74dff3d1a/Untitled.png)
+<img src="./img/psc.png" alt="drawing" width="400"/>
+<img src="./img/psc2.png" alt="drawing" width="400"/>
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4d1d87a-92aa-4b28-8274-e1872f97f0f0/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4d1d87a-92aa-4b28-8274-e1872f97f0f0/Untitled.png)
 
 ### **Python implementation**
 
@@ -317,7 +322,8 @@ We give a python implementation of FastSLAM (based on **Particle Filter** method
 
 The equations of this model are:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c36d7fe7-f01f-47d8-bfc4-12d3861e8729/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c36d7fe7-f01f-47d8-bfc4-12d3861e8729/Untitled.png)
+<img src="./img/FBX.png" alt="drawing" width="400"/>
+
 
 Visualizations:
 
@@ -330,21 +336,22 @@ Visualizations:
 
 The system is initialized with the following values.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1ec4942e-1650-4961-b77c-d3e2bd15913c/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1ec4942e-1650-4961-b77c-d3e2bd15913c/Untitled.png)
+<img src="./img/i1.png" alt="drawing" width="400"/>
+<img src="./img/i11.png" alt="drawing" width="300"/>
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/93d27f0b-89a0-4bcc-8c55-f25ed64b2624/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/93d27f0b-89a0-4bcc-8c55-f25ed64b2624/Untitled.png)
+
 
 Figure 15. Model initialization with 8 landmarks.
 
 Eight landmarks are provided simulating the landmarks recognized from the video frames. The black dot surrounded by red dots is where the navigations begins.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8dccd71d-0bb6-4faf-a54d-6c8641ff99f9/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8dccd71d-0bb6-4faf-a54d-6c8641ff99f9/Untitled.png)
+<img src="./img/i2.png" alt="drawing" width="400"/>
 
 New observations are received continuously so the particles are updated and resampled on each iteration.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/91ff4901-91c4-46b0-aa72-2039d1ca57a4/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/91ff4901-91c4-46b0-aa72-2039d1ca57a4/Untitled.png)
+<img src="./img/i3.png" alt="drawing" width="400"/>
+<img src="./img/i31.png" alt="drawing" width="600"/>
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6ab8d3b-b3ae-4d08-9929-701a7a05ba84/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6ab8d3b-b3ae-4d08-9929-701a7a05ba84/Untitled.png)
 
 Figure 16. We can see the drone’s trajectory in timestamps t = 207 and t = 499.
 
@@ -356,9 +363,9 @@ In this scenario we will simulate how the navigations is affected when the obser
 
 We will provide new observations and resampling every 100 steps.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac5b6a26-3173-48eb-84c8-0d4bdf5d5de7/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac5b6a26-3173-48eb-84c8-0d4bdf5d5de7/Untitled.png)
+<img src="./img/i4.png" alt="drawing" width="400"/>
+<img src="./img/i41.png" alt="drawing" width="600"/>
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/248fcbc8-7edd-4f0b-9f04-872b18193d35/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/248fcbc8-7edd-4f0b-9f04-872b18193d35/Untitled.png)
 
 Figure 17. Drone’s trajectory at 4 different timestamps.
 
@@ -368,9 +375,9 @@ We can observe (Figure 17) how the lack of information from the visual system af
 
 Now we set up the environment providing only one landmark, this is representing a scenario where the drone cannot rely on visual references anymore.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/72c5c3d3-3512-4e04-a4d3-f7884ba517cc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/72c5c3d3-3512-4e04-a4d3-f7884ba517cc/Untitled.png)
+<img src="./img/i5.png" alt="drawing" width="400"/>
+<img src="./img/i51.png" alt="drawing" width="600"/>
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/65e077b5-26e2-4d34-9e31-b7ca17870e81/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/65e077b5-26e2-4d34-9e31-b7ca17870e81/Untitled.png)
 
 Figure 18. Drone’s trajectory using 1 and 8 landmarks.
 
