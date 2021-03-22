@@ -1,5 +1,9 @@
-# SLAM_Navigation
-SLAM navigation on simplified scenario (FastSLAM implementation using Python) based on Particle Filter (Sequential Monte Carlo). What happens when the visual support of a drone is missing?
+# Simultaneous Localization and Mapping Navigation
+
+
+#### Author
+    J. Rico (jvirico@gmail.com)
+
 
 ## **Abstract**
 
@@ -30,7 +34,8 @@ Main technologies considered on this proposal paper:
 
 In big industrial facilities, fault identification of the different components of the plant is a critical part of the daily operation.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8952231-9e7f-4da2-b24e-fa14a2bbbf0d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8952231-9e7f-4da2-b24e-fa14a2bbbf0d/Untitled.png)
+<img src="./img/ae.png" alt="drawing" width="400"/>
+
 
 Figure 1. Aerial view of Photovoltaic Park.
 
@@ -44,7 +49,8 @@ Previous works explored the possibility of using drones provisioned with cameras
 
 Hot spots are areas of elevated temperature affecting only part of the solar panel. They are a result of a localized decrease in efficiency, which results in lower power output and an acceleration of the materials degradation in the affected area.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/130a781b-723e-4106-ad4e-764875f9b6d5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/130a781b-723e-4106-ad4e-764875f9b6d5/Untitled.png)
+
+<img src="./img/hs.png" alt="drawing" width="400"/>
 
 Figure 2. Hot Spots.
 
@@ -56,25 +62,28 @@ They are easily identifiable using thermographic images of the panels, like show
 
 Previous works done on the Hot Spot identification using thermographic images captured from a flying drone, and Deep Learning algorithms showed successful results.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d5857be4-2fa1-45d2-9a3e-e7d3a36edf14/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d5857be4-2fa1-45d2-9a3e-e7d3a36edf14/Untitled.png)
+<img src="./img/plan.png" alt="drawing" width="400"/>
+
 
 Figure 3. Plan of dron’s flight over testing area.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e6a5e33-c1d8-4a8b-a4d6-b63bab6137e3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e6a5e33-c1d8-4a8b-a4d6-b63bab6137e3/Untitled.png)
+<img src="./img/100.png" alt="drawing" width="400"/>
 
 Figures 4. a) Hot Spots identification using Convolutional Neural Networks.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c293aee6-3796-4902-bfd8-be2d61bd13d1/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c293aee6-3796-4902-bfd8-be2d61bd13d1/Untitled.png)
+<img src="./img/100_2.png" alt="drawing" width="300"/>
 
 Figure 4. b)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1352fbc5-c18b-4cef-8c1c-b047d6847c50/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1352fbc5-c18b-4cef-8c1c-b047d6847c50/Untitled.png)
+<img src="./img/100_3.png" alt="drawing" width="300"/>
+
 
 Figure 4. c)
 
 This opened another challenges, like (1) assignment of Hot Spots to its exact panels or areas of the plant (see image below), and (2) automation of the drone’s flight, and its localization, navigation and stabilization. As an alternative, manually operated drone by personal of the facility was considered. The main focus of this document is to cover the later part (2) applying SLAM and Kalman Filter.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e5ab858-6c79-416f-9e4b-f74636cb8778/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e5ab858-6c79-416f-9e4b-f74636cb8778/Untitled.png)
+
+<img src="./img/hm.png" alt="drawing" width="300"/>
 
 Figure 5. Hot Spot identification on the map (1).
 
@@ -376,26 +385,25 @@ In this way, the system should be able to process video frames together with a p
 3. Logistics of drone operation, autonomy, drone fleet, flight plan optimization to cover large areas, emergency protocols in case of drone failure.
 4. Computational capacity of industrial drones, real-time/non-real-time image evaluation, the technological infrastructure required to scale to production.
 
+
+## Cite this work
+    J. Rico, (2019) SLAM Navigation
+    [Source code](https://github.com/jvirico/SLAM_Navigation)
+
 ## **References**
 
 [1] Camera-Based Localization and Stabilization of a Flying Drone
-
 [https://www.semanticscholar.org/paper/Camera-Based-Localization-and-Stabilization-of-a-Skoda-Bart%C3%A1k/33380637d49fbd6eb19ab8f54d600b04e5034302](https://www.semanticscholar.org/paper/Camera-Based-Localization-and-Stabilization-of-a-Skoda-Bart%C3%A1k/33380637d49fbd6eb19ab8f54d600b04e5034302)
 
 [2] Designing and Modeling of Quadcopter Control System Using L1 Adaptive Control
-
 [https://www.sciencedirect.com/science/article/pii/S1877050917300479](https://www.sciencedirect.com/science/article/pii/S1877050917300479)
 
 [3] Simultaneous localization and mapping
-
 [https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping)
 
 [4] PythonRobotics Documentation
-
 [https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/](https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/)
-
 [https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0](https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0)
 
 [5] FastSLAM – Feature-based SLAM with Particle Filters
-
 [http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf)
