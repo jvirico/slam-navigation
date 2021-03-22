@@ -402,13 +402,9 @@ In this way, the system should be able to process video frames together with a p
 
 ## **References**
 
-[1] - SKODA, Jan; BARTÁK, Roman. Camera-based localization and stabilization of a flying drone. En The Twenty-Eighth International Flairs Conference. 2015.
-
-[2] - THU, Kyaw Myat; GAVRILOV, A. I. Designing and modeling of quadcopter control system using L1 adaptive control. Procedia Computer Science, 2017, vol. 103, p. 528-535.
-
-[3] - [Simultaneous localization and mapping Wikipedia](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping).
-
+[1] - SKODA, Jan; BARTÁK, Roman. Camera-based localization and stabilization of a flying drone. En The Twenty-Eighth International Flairs Conference. 2015.\
+[2] - THU, Kyaw Myat; GAVRILOV, A. I. Designing and modeling of quadcopter control system using L1 adaptive control. Procedia Computer Science, 2017, vol. 103, p. 528-535.\
+[3] - [Simultaneous localization and mapping Wikipedia](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping).\
 [4] - [PythonRobotics Documentation](https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/).
-[Fast Slam](https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0).
-
+[Fast Slam](https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0).\
 [5] - [FastSLAM – Feature-based SLAM with Particle Filters](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf)
