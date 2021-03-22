@@ -106,11 +106,12 @@ For each pixel of the image:
 2. Thinning edges by setting pixels to zero if its magnitude is not greater than the magnitude of its neighbors in the gradient direction. This is called non-maxima suppression.
 3. We decide if the pixel is part of an edge or not by using hysteresis thresholding. Two thresholds (t1, t2). If pixel *value > t2* it is an edge. If *t2 < value < t1* then it is an edge if it has a neighbor classified as edge in the direction perpendicular to its edge normal calculated in (1).
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4def170-b23e-4eb4-9144-3bf76e1c2402/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4def170-b23e-4eb4-9144-3bf76e1c2402/Untitled.png)
+<img src="./img/cd.png" alt="drawing" width="500"/>
+
 
 Figure 6. Canny Edge Detector on cenital view of plant.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8e67e71d-b720-4e1c-b9d7-619e73ccc7de/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8e67e71d-b720-4e1c-b9d7-619e73ccc7de/Untitled.png)
+<img src="./img/cd2.png" alt="drawing" width="500"/>
 
 Figure 7. Canny Edge Detector of closed view of panels.
 
@@ -118,13 +119,13 @@ Figure 7. Canny Edge Detector of closed view of panels.
 
 This technique uses Polar equation to represent an image in Hough space, where all points that form one line in the Euclidean space are represented by sinusoids that cross each other in a single point in Hough space.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d4a436d9-5887-4956-a292-0ae3750f5ccf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d4a436d9-5887-4956-a292-0ae3750f5ccf/Untitled.png)
+<img src="./img/ht.png" alt="drawing" width="300"/>
 
 Figure 8. Hough space.
 
 The selection of the *n* maximum values (7 in the example below) in Hoght space will give us *n* lines on the original image.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ae88419e-d263-4daf-ba89-2ca0158af56d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ae88419e-d263-4daf-ba89-2ca0158af56d/Untitled.png)
+<img src="./img/hsp.png" alt="drawing" width="500"/>
 
 Figure 9. N-maxima selection in Hough space.
 
@@ -132,7 +133,8 @@ The n maximums can be represented back in Euclidian Space by using the Polar equ
 
 $$r(\theta) = x*cos\theta + y*sin \theta$$
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ec71faa-5be1-4176-8893-a82ecc3c2444/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ec71faa-5be1-4176-8893-a82ecc3c2444/Untitled.png)
+
+<img src="./img/ld.png" alt="drawing" width="500"/>
 
 Figure 10. Line detection applying Hough Transform.
 
@@ -140,7 +142,8 @@ Figure 10. Line detection applying Hough Transform.
 
 There are typically two configurations for a quadcopter, ‘+’ configuration and ‘x’ configuration.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee3f60c9-2298-4540-bd62-61de120e9e79/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee3f60c9-2298-4540-bd62-61de120e9e79/Untitled.png)
+<img src="./img/dpos.png" alt="drawing" width="300"/>
+
 
 Figure 11. + configuration (a), x configuration (b).
 
@@ -148,9 +151,10 @@ We will consider ‘x’ configuration for the model.
 
 The position of the drone is defined in the axes x, y, z by x. The angular position is defined with three Euler angles by h. And the vector q contains the linear and angular position vectors.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c836b330-df65-4735-b136-ffe4d280a2bf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c836b330-df65-4735-b136-ffe4d280a2bf/Untitled.png)
+<img src="./img/euler.png" alt="drawing" width="200"/>
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eba54969-dd95-48d8-b659-4f19ce0de6b0/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eba54969-dd95-48d8-b659-4f19ce0de6b0/Untitled.png)
+
+<img src="./img/forces.png" alt="drawing" width="400"/>
 
 Figure 12. Forces, moments and reference systems of a quadcopter.
 
@@ -174,7 +178,7 @@ Following we introduce how SLAM, Simultaneous Localization and Mapping, can solv
 
 Given a series of controls $*u_t*$ and sensor observations $*o_t*$ over discrete time steps *t*, the SLAM problem is to compute an estimate of the drone’s location $*x_t*$ and a map of the environment $*m_t*$. All quantities are usually probabilistic, so the objective is to compute:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/53678378-0883-455e-a306-ebb27eec7761/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/53678378-0883-455e-a306-ebb27eec7761/Untitled.png)
+<img src="./img/P.png" alt="drawing" width="200"/>
 
 Applying Bayes' rule gives a framework for sequentially updating the location posteriors, given a map and a transition function
 
