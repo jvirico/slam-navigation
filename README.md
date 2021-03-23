@@ -398,7 +398,8 @@ In this way, the system should be able to process video frames together with a p
 
 
 ## Cite this work
-    J. Rico, (2019) SLAM Navigation for automated photovoltaic plant fault detection using drones. [Source code](https://github.com/jvirico/SLAM_Navigation)
+    J. Rico, (2019) SLAM Navigation for automated photovoltaic plant fault detection using drones. 
+    [Source code](https://github.com/jvirico/SLAM_Navigation)
 
 ## **References**
 
