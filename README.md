@@ -408,4 +408,4 @@ In this way, the system should be able to process video frames together with a p
 [3] - [Simultaneous localization and mapping Wikipedia](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping).\
 [4] - [PythonRobotics Documentation](https://readthedocs.org/projects/pythonrobotics/downloads/pdf/latest/).
 [Fast Slam](https://pythonrobotics.readthedocs.io/en/latest/modules/slam.html#fastslam1-0).\
-[5] - [FastSLAM – Feature-based SLAM with Particle Filters](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf)
+[5] - [FastSLAM – Feature-based SLAM with Particle Filters](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam10-fastslam.pdf).
